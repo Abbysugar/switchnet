@@ -1,0 +1,19 @@
+
+{% extends 'user_mgr/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Create free account {% endblock title %}
+
+{% block inner_content %}
+<h1>This is the login form</h1>
+{% if messages %}
+  {% for msg in messages %}
+    <p>{{ msg }}</p>
+  {% endfor %}
+{% endif %}
+<form class="form" action="{% url 'user_mgr:login' %}" method="post">
+  {% csrf_token %}
+  {{ loginForm.as_p }}
+  <button type="submit" name="button" value="submit">Submit Form!</button>
+</form>
+{% endblock inner_content %}
